@@ -1,0 +1,29 @@
+﻿<Window x:Name="clipboardForm1" x:Class="QuickInsert.clipboardForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuickInsert"
+        mc:Ignorable="d"
+        Title="clipboardForm" 
+        Height="483" 
+        Width="600" 
+        Background="#00000000" 
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" 
+        KeyDown="clipboardForm1_KeyDown">
+    <Window.Effect>
+        <BlurEffect/>
+    </Window.Effect>
+    <StackPanel >
+        <ListBox x:Name="label1" Height="70" Margin="0 10 0 7"/>
+        <ListBox x:Name="label2" Height="70" Margin="0 7 0 7"/>
+        <ListBox x:Name="label3" Height="70" Margin="0 7 0 7"/>
+        <ListBox x:Name="label4" Height="70" Margin="0 7 0 7"/>
+        <ListBox x:Name="label5" Height="70" Margin="0 7 0 10"/>
+
+
+    </StackPanel>
+</Window>
