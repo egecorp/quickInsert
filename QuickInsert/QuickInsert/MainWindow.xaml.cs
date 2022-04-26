@@ -1,18 +1,10 @@
-﻿using QuickInsert.DAL;
+﻿#nullable enable
+
+using QuickInsert.DAL;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
 
 namespace QuickInsert
 {
@@ -21,9 +13,38 @@ namespace QuickInsert
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly NotifyIcon _mNotifyIcon;
+
+        private readonly UserActivityHook _keyboardHook;
+
+        private bool _modalShown;
+        private bool _isCtrl;
+        private bool _isWin;
+        private bool _isC;
+
         public MainWindow()
         {
             InitializeComponent();
+            _mNotifyIcon = new NotifyIcon
+            {
+                BalloonTipText = "Open application",
+                BalloonTipTitle = "Quick Insert",
+                Text = "Quick insert",
+                Icon = new System.Drawing.Icon("quickInsert.ico"),
+                Visible = true
+            };
+
+            _mNotifyIcon.DoubleClick += new EventHandler(m_notifyIcon_Click);
+
+            _keyboardHook = new UserActivityHook(); 
+            _keyboardHook.KeyDown += new KeyEventHandler(MyKeyDown);
+            _keyboardHook.KeyUp += new KeyEventHandler(MyKeyUp);
+
+        }
+
+        private void m_notifyIcon_Click(object? sender, EventArgs e)
+        {
+            this.Show();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -39,6 +60,9 @@ namespace QuickInsert
             {
                 MessageBox.Show(ee.Message);
             }
+
+            _keyboardHook.Start(false, true);
+            this.Hide();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -63,10 +87,86 @@ namespace QuickInsert
 
         private void Form_Button_Click(object sender, RoutedEventArgs e)
         {
-
-            clipboardForm c = new clipboardForm();
-            c.ShowDialog();
-
+            ShowModal();
         }
+
+        private void CloseSettings_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+        }
+        private void ShowModal()
+        {
+            _modalShown = true;
+            ClipboardForm c = new ClipboardForm(this);
+            c.ShowDialog();
+            _modalShown = false;
+        }
+
+
+
+        private void MyKeyDown(object? sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.LControlKey)
+            {
+                _isCtrl = true;
+            }
+            else if (e.KeyData ==  Keys.LWin)
+            {
+                _isWin = true;
+            }
+            else if (e.KeyData == Keys.C)
+            {
+                _isC = true;
+            }
+
+            CheckAllKeys();
+        }
+
+        private void MyKeyUp(object? sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.LControlKey)
+            {
+                _isCtrl = false;
+            }
+            else if (e.KeyData == Keys.LWin)
+            {
+                _isWin = false;
+            }
+            else if (e.KeyData == Keys.C)
+            {
+                _isC = false;
+            }
+
+            CheckAllKeys();
+        }
+
+
+        private void CheckAllKeys()
+        {
+            if (_isCtrl && _isWin && _isC )
+            {
+                if (!_modalShown) ShowModal();
+            }
+        }
+
+        private void form_Unloaded(object sender, RoutedEventArgs e)
+        {
+            _keyboardHook.Stop();
+        }
+
+        private void form_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+        }
+
+        private void Exit_Button_Click(object sender, RoutedEventArgs e)
+        {
+            _mNotifyIcon.Icon = null;
+            _mNotifyIcon.Visible = false;
+            _mNotifyIcon.Dispose();
+            Environment.Exit(0);
+        }
+        
     }
 }

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
-using System.Reflection;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace QuickInsert.DAL
@@ -23,8 +21,6 @@ namespace QuickInsert.DAL
             File.WriteAllText(GetJsonFileFullName(), jsonFileBody);
             _singleton = newItemRepository;
         }
-
-
         public static ItemRepository GetSingleton()
         {
             if (_singleton != null) return _singleton;
@@ -38,8 +34,6 @@ namespace QuickInsert.DAL
                 return _singleton = JsonConvert.DeserializeObject<ItemRepository>(jsonFileBody);
             }
 
-
-
             _singleton = new ItemRepository();
 
             _singleton.Items = new List<OneItem>()
@@ -48,7 +42,6 @@ namespace QuickInsert.DAL
                         {
                             Name = "Название",
                             Value = "Значение",
-                            Order = 1,
                             KeyShortCuts = null,
                             IsValueHidden = false
                         }
@@ -71,7 +64,15 @@ namespace QuickInsert.DAL
 
         public List<OneItem> GetItems()
         {
-            return Items ?? new List<OneItem>();
+            var resultItems = (Items ??= new List<OneItem>()).ToList();
+
+            if (resultItems.Count < 1) resultItems.Add(new OneItem() { Name = "Empty", Value = "Empty" });
+            if (resultItems.Count < 2) resultItems.Add(new OneItem() { Name = "Empty", Value = "Empty" });
+            if (resultItems.Count < 3) resultItems.Add(new OneItem() { Name = "Empty", Value = "Empty" });
+            if (resultItems.Count < 4) resultItems.Add(new OneItem() { Name = "Empty", Value = "Empty" });
+            if (resultItems.Count < 5) resultItems.Add(new OneItem() { Name = "Empty", Value = "Empty" });
+
+            return Items;
         }
 
         public string GetJson()

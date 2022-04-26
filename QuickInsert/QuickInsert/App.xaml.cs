@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using QuickInsert.DAL;
+using System;
 using System.Windows;
 
 namespace QuickInsert
@@ -13,6 +9,9 @@ namespace QuickInsert
     /// </summary>
     public partial class App : Application
     {
+
+        public ItemRepository ItemRepository;
+
         [STAThread]
         public static void Main()
         {
@@ -24,10 +23,10 @@ namespace QuickInsert
         /// <summary>
         /// InitializeComponent
         /// </summary>
-        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.Diagnostics.DebuggerNonUserCode()]
         public void InitializeComponent()
         {
-            this.StartupUri = new System.Uri("MainWindow.xaml", System.UriKind.Relative);
+            StartupUri = new Uri("MainWindow.xaml", UriKind.Relative);
         }
     }
 }

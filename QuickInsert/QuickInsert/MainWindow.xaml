@@ -5,13 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuickInsert"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1024" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
+        Title="Quick Insert Settings" Height="450" Width="1024" Loaded="Window_Loaded" 
+        SizeChanged="Window_SizeChanged"
+        Unloaded="form_Unloaded" Icon="/quickInsert.ico" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Closing="form_Closing" 
+        >
     <StackPanel x:Name="stackPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
         <ToolBarPanel x:Name="toolBarPanel" >
             <ToolBar >
                 <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click"/>
-                <Button Content="Form" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Form_Button_Click"/>
+                <Button Content="Show Form" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Form_Button_Click"/>
+                <Button Content="Close settings" HorizontalAlignment="Left" VerticalAlignment="Top" Click="CloseSettings_Button_Click"/>
+                <Button Content="Exit" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Exit_Button_Click"/>
             </ToolBar>
         </ToolBarPanel>
         <TextBox 
@@ -19,6 +24,7 @@
             TextWrapping="NoWrap" 
             HorizontalAlignment="Left" 
             Background="#FFDDD5F4" AcceptsTab="True" AcceptsReturn="True" Width="873" FontWeight="Regular" FontFamily="Candara" FontSize="14"/>
+        <ToolBarTray Height="100" Width="100"/>
 
     </StackPanel>
 </Window>
