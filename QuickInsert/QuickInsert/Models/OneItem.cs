@@ -10,6 +10,7 @@ namespace QuickInsert.DAL
 
         public bool IsValueHidden { set; get; }
 
+        public bool MoveDownAfterCopy { set; get; }
         public string KeyShortCuts { set; get; }
 
         [JsonIgnore]

@@ -16,12 +16,9 @@
         KeyDown="clipboardForm1_KeyDown" Topmost="True">
 
     <StackPanel Loaded="StackPanel_Loaded" >
-        <Border Margin="40 7 40 7" CornerRadius="20" >
+        <Border Margin="10 7 70 7" CornerRadius="4" >
             <Border.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#9F507730" Offset="0.832"/>
-                    <GradientStop Color="#9FFDBFE6" Offset="0.555"/>                    
-                </RadialGradientBrush>
+                <SolidColorBrush Color="#30FDFDFD" />
             </Border.Background>
             <Canvas Height="75">
                 <Label x:Name="buttonM2" 
@@ -34,7 +31,7 @@
                    HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  
                     Height="30"   Foreground="#FF0F0505" FontFamily="Arial"
                      Margin="110 50 20 0" Width="400"  
-                   FontSize="14" VerticalAlignment="Center" Content="Значени"  >
+                   FontSize="14" VerticalAlignment="Center"   >
                 </Label>
                 <Label x:Name="shortKeyM2"
                    HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  
@@ -44,12 +41,9 @@
                 </Label>
             </Canvas>
         </Border>
-        <Border Margin="20 7 20 7" CornerRadius="20">
+        <Border Margin="10 7 30 7" CornerRadius="4">
             <Border.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#CF507730" Offset="0.832"/>
-                    <GradientStop Color="#CF6DBFE6" Offset="0.555"/>
-                </RadialGradientBrush>
+                <SolidColorBrush Color="#70FDFDFD" />
             </Border.Background>
             <Canvas  Height="75">
                 <Label x:Name="buttonM1" 
@@ -62,7 +56,7 @@
                    HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  
                     Height="30"   Foreground="#FF0F0505" FontFamily="Arial"
                      Margin="110 50 20 0" Width="440"  
-                   FontSize="14" VerticalAlignment="Center" Content="Значени"  >
+                   FontSize="14" VerticalAlignment="Center"  >
                 </Label>
                 <Label x:Name="shortKeyM1"
                    HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  
@@ -74,16 +68,14 @@
                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  
                     Height="30"   Foreground="#FF0F0505" FontFamily="Arial"
                      Margin="10 0 20 0" Width="470"  
-                   FontSize="14" VerticalAlignment="Center" Content="s - scroll here"  >
+                   FontSize="14" VerticalAlignment="Center" Content="s,z,up - scroll here"  >
                 </Label>
             </Canvas>
         </Border>
-        <Border  Margin="0 7 0 7" CornerRadius="20" BorderBrush="Black" BorderThickness="2" x:Name="MainBorder">
+        <Border  Margin="5 7 10 7" CornerRadius="4" 
+                 BorderBrush="Black" BorderThickness="2" x:Name="MainBorder">
             <Border.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#EF507730" Offset="0.832"/>
-                    <GradientStop Color="#EFFDBFE6" Offset="0.555"/>
-                </RadialGradientBrush>
+                <SolidColorBrush Color="#FFFDFDFD" />
             </Border.Background>
             <Canvas  Height="75">
                 <Label x:Name="buttonC"
@@ -96,7 +88,7 @@
                     HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  
                     Height="30"   Foreground="#FF0F0505" FontFamily="Arial"
                     Margin="110 50 20 0" Width="470"  
-                    FontSize="14" VerticalAlignment="Center" Content="Значени"  >
+                    FontSize="14" VerticalAlignment="Center"   >
                 </Label>
                 <Label x:Name="shortKeyC"
                     HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  
@@ -108,16 +100,13 @@
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  
                     Height="30"   Foreground="#FF0F0505" FontFamily="Arial"
                     Margin="10 0 20 0" Width="470"  
-                    FontSize="14" VerticalAlignment="Center" Content="c - copy to clipboard"  >
+                    FontSize="14" VerticalAlignment="Center" Content="c, enter - copy to clipboard"  >
                 </Label>
             </Canvas>
         </Border>
-        <Border  Margin="20 7 20 7" CornerRadius="20">
+        <Border  Margin="10 7 30 7" CornerRadius="7">
             <Border.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#CF507730" Offset="0.832"/>
-                    <GradientStop Color="#CFFDBFE6" Offset="0.555"/>
-                </RadialGradientBrush>
+                <SolidColorBrush Color="#70FDFDFD" />
             </Border.Background>
             <Canvas  Height="75">
                 <Label x:Name="buttonP1"
@@ -130,7 +119,7 @@
                     HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  
                     Height="30"   Foreground="#FF0F0505" FontFamily="Arial"
                     Margin="110 50 20 0" Width="440"  
-                    FontSize="14" VerticalAlignment="Center" Content="Значени"  >
+                    FontSize="14" VerticalAlignment="Center"   >
                 </Label>
                 <Label x:Name="shortKeyP1"
                     HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  
@@ -142,16 +131,13 @@
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  
                     Height="30"   Foreground="#FF0F0505" FontFamily="Arial"
                     Margin="10 0 20 0" Width="470"  
-                    FontSize="14" VerticalAlignment="Center" Content="x - scroll here"  >
+                    FontSize="14" VerticalAlignment="Center" Content="x, down - scroll here"  >
                 </Label>
             </Canvas>
         </Border>
-        <Border  Margin="40 7 40 7" CornerRadius="20">
+        <Border  Margin="10 7 70 7" CornerRadius="4">
             <Border.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#9F507730" Offset="0.832"/>
-                    <GradientStop Color="#9FFDBFE6" Offset="0.555"/>
-                </RadialGradientBrush>
+                <SolidColorBrush Color="#30FDFDFD" />
             </Border.Background>
             <Canvas  Height="75">
                 <Label x:Name="buttonP2"
@@ -164,7 +150,7 @@
                     HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  
                     Height="30"   Foreground="#FF0F0505" FontFamily="Arial"
                     Margin="110 50 20 0" Width="400"  
-                    FontSize="14" VerticalAlignment="Center" Content="Значени"  >
+                    FontSize="14" VerticalAlignment="Center"   >
                 </Label>
                 <Label x:Name="shortKeyP2"
                     HorizontalContentAlignment="Right" VerticalContentAlignment="Center"  
@@ -175,7 +161,7 @@
             </Canvas>
         </Border>
 
-        <Border Margin="0 7 0 7" CornerRadius="10" Background="#9F507730">
+        <Border Margin="0 7 0 7"  Background="#FFF3F3F3">
             
             <Canvas  Height="25">
                 <Label x:Name="bottomTip"

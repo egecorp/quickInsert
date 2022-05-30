@@ -50,6 +50,22 @@ namespace QuickInsert
             });
         }
 
+        private void NavigationDown()
+        {
+            if (--Navigation.CurrentIndex < 0)
+            {
+                Navigation.CurrentIndex = _totalCount - 1;
+            }
+        }
+
+        private void NavigationUp()
+        {
+            if (++Navigation.CurrentIndex >= _totalCount)
+            {
+                Navigation.CurrentIndex = 0;
+            }
+        }
+
         private void clipboardForm1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
@@ -57,39 +73,29 @@ namespace QuickInsert
                 this.DialogResult = false;
                 this.Close();
             }
-            else if (e.Key == Key.C)
+            else if ((e.Key == Key.C) || (e.Key == Key.Enter))
             {
                 Console.WriteLine("Item = " + ItemC.Value);
                 Clipboard.SetText(ItemC.Value);
-
-                try
+                if (ItemC.MoveDownAfterCopy)
                 {
-                    MainBorder.Background = Brushes.White;
+                    NavigationUp();
                 }
-                catch (Exception ee)
-                {
-                    Console.Write(ee.Message);
-                }
+                
+                MainBorder.Background = Brushes.White;
+                
 
                 CloseForm().Start();
                
             }
-            else if (e.Key == Key.S)
+            else if ((e.Key == Key.S) || (e.Key == Key.Z) || (e.Key == Key.Up))
             {
-                if (-- Navigation.CurrentIndex < 0)
-                {
-                    Navigation.CurrentIndex = _totalCount - 1;
-                }
-
+                NavigationDown();
                 UpdateLabels();
             }
-            else if (e.Key == Key.X)
+            else if ((e.Key == Key.X) || (e.Key == Key.Down))
             {
-                if (++Navigation.CurrentIndex >= _totalCount)
-                {
-                    Navigation.CurrentIndex = 0;
-                }
-
+                NavigationUp();
                 UpdateLabels();
             }
             else if (e.Key == Key.Tab)
